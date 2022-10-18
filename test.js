@@ -137,7 +137,7 @@ function purchase(item, times) {
 
             else if (autos > 1 && auto_timer >= 1000) {
                 if (auto_timer > 1000){ 
-                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))));
+                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2)))) + (1/100 * boosts);
                     old_auto = autos
                 }
                 if(typeof t !== 'undefined') {
