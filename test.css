@@ -1,0 +1,23 @@
+body {
+    background-color: #333333;
+}
+
+p {
+    color: white;
+}
+
+.shopvis {
+    display: block;
+}
+
+.shopinvis {
+    display: none;
+}
+
+.autoinc {
+    display: inline-block;
+}
+
+.boostinc {
+    display: inline-block;
+}
