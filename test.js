@@ -12,6 +12,18 @@ function main() {
     document.getElementById("game").style.display = "none";
 }
 
+// Enters the main game by calling the other js script
+
+function enterworld() {
+    if (hellos >= 10000 && autos >= 1000 && boosts == 200) {
+        hellos -= 10000;
+        autos -= 1000;
+        boosts -= 200;
+
+        make_visible("enterworlda");
+    }
+}
+
 // Allows things to be edited and returned to a "defualt" state after a preset amount of time
 
 function text_defaults(items) {
@@ -87,6 +99,10 @@ function vis_update () {
     if (autos >= "10000" && !document.getElementById("boostinc100").classList.contains("shopvis")) {
         make_visible("boostinc100");
         document.getElementById("boostinc100").classList.add("boostinc");
+    }
+
+    if (boosts >= 1) {
+        make_visible("enterworld");
     }
 
     // Updates elements that display how much of each "currency" you have

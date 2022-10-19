@@ -21,3 +21,7 @@ p {
 .boostinc {
     display: inline-block;
 }
+
+a {
+    color: white;
+}
