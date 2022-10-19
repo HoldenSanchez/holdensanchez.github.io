@@ -10,6 +10,28 @@ var change = true;
 
 function main() {
     document.getElementById("game").style.display = "none";
+
+    load();
+
+    autosave = setInterval(save, 30000);
+
+    vis_update();
+}
+
+function save() {
+    localStorage.setItem("hellos", hellos)
+}
+
+function load() {
+    var hellos_stored = parseInt(localStorage.getItem("hellos"));
+    if (!isNaN(hellos_stored)) {
+        hellos = hellos_stored;
+    }
+    
+}
+
+function delete_local() {
+    localStorage.removeItem("hellos");
 }
 
 // Enters the main game by calling the other js script
@@ -36,10 +58,6 @@ function text_defaults(items) {
 
 function increment() {
     hellos += 1 + boosts;
-
-    if (hellos == 1) {
-        document.getElementById("game").style.display = "block";
-    }
 
     vis_update();
 
@@ -68,6 +86,10 @@ function make_visible(id) {
 function vis_update () {
 
     // Auto incrememnt elements visibility settings
+
+    if (hellos >= 1) {
+        document.getElementById("game").style.display = "block";
+    }
 
     if (hellos >= "30" && !document.getElementById("autoincb").classList.contains("shopvis")) {
         make_visible("autoincb");
