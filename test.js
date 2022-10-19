@@ -39,7 +39,7 @@ function auto_increment() {
     if (autoOverflow >= 102) {
         autoOverflow = 101
     }
-    hellos += autoOverflow;
+    hellos += autoOverflow + (1/100 * boosts);
 
     vis_update();
 }
@@ -137,7 +137,7 @@ function purchase(item, times) {
 
             else if (autos > 1 && auto_timer >= 1000) {
                 if (auto_timer > 1000){ 
-                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2)))) + (1/100 * boosts);
+                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))));
                     old_auto = autos
                 }
                 if(typeof t !== 'undefined') {
@@ -145,7 +145,7 @@ function purchase(item, times) {
                 }
                 t = setInterval(auto_increment, auto_timer);
                 if (auto_timer <= 1000) {
-                    autoOverflow = autos - old_auto
+                    autoOverflow = autos - old_auto + 1
                 }
             }
 
