@@ -5,6 +5,7 @@ var auto_timer = 10000;
 var autoOverflow = 1;
 var boosts = 0;
 var change = true;
+var unlocks = 0;
 
 // Main function, has very little in it now but may add more as functions increase
 
@@ -19,13 +20,28 @@ function main() {
 }
 
 function save() {
-    localStorage.setItem("hellos", hellos)
+    localStorage.setItem("hellos", hellos);
+    localStorage.setItem("autos", autos);
+    localStorage.setItem("boosts", boosts);
+    localStorage.setItem("unlocks", unlocks);
 }
 
 function load() {
     var hellos_stored = parseInt(localStorage.getItem("hellos"));
     if (!isNaN(hellos_stored)) {
         hellos = hellos_stored;
+    }
+    var autos_stored = parseInt(localStorage.getItem("autos"));
+    if (!isNaN(autos_stored)) {
+        autos = autos_stored;
+    }
+    var boosts_stored = parseInt(localStorage.getItem("boosts"));
+    if (!isNaN(boosts_stored)) {
+        boosts = boosts_stored;
+    }
+    var unlocks_stored = parseInt(localStorage.getItem("unlocks"));
+    if (!isNaN(unlocks_stored)) {
+        unlocks = unlocks_stored;
     }
     
 }
@@ -41,6 +57,9 @@ function enterworld() {
         hellos -= 10000;
         autos -= 1000;
         boosts -= 200;
+        unlocks = 1;
+
+        save();
 
         make_visible("enterworlda");
     }
@@ -123,8 +142,14 @@ function vis_update () {
         document.getElementById("boostinc100").classList.add("boostinc");
     }
 
-    if (boosts >= 1) {
+    if (boosts >= 1 && unlocks == 0) {
         make_visible("enterworld");
+    }
+
+    // Loads world tab
+
+    if (unlocks >= 1) {
+        make_visible("enterworlda");
     }
 
     // Updates elements that display how much of each "currency" you have
