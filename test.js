@@ -23,7 +23,7 @@ function text_defaults(items) {
 // Normal incrememnt for the click
 
 function increment() {
-    hellos++;
+    hellos += 1 + boosts;
 
     if (hellos == 1) {
         document.getElementById("game").style.display = "block";
@@ -39,7 +39,7 @@ function auto_increment() {
     if (autoOverflow >= 102) {
         autoOverflow = 101
     }
-    hellos += autoOverflow + (1/100 * boosts);
+    hellos += autoOverflow + (1/2 * boosts);
 
     vis_update();
 }
@@ -91,7 +91,7 @@ function vis_update () {
 
     // Updates elements that display how much of each "currency" you have
 
-    document.getElementById("hellos").innerText = "Hellos: " + hellos;
+    document.getElementById("hellos").innerText = "Hellos: " + Math.round(hellos);
     document.getElementById("autoincp").innerText = "Hello, Autos: " + autos;
     document.getElementById("boostincp").innerText = "Hello, Boosts: " + boosts;
 }
