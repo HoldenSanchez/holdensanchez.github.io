@@ -27,23 +27,25 @@ function save() {
 }
 
 function load() {
-    var hellos_stored = parseInt(localStorage.getItem("hellos"));
+    const hellos_stored = parseInt(localStorage.getItem("hellos"));
     if (!isNaN(hellos_stored)) {
         hellos = hellos_stored;
     }
-    var autos_stored = parseInt(localStorage.getItem("autos"));
-    if (!isNaN(autos_stored)) {
-        purchase("auto", autos_stored)
+    const autos_stored = parseInt(localStorage.getItem("autos"));
+    if (!isNaN(autos_stored) && autos != autos_stored) {
+        console.log(autos_stored)
+        purchase("auto", autos_stored, false)
     }
-    var boosts_stored = parseInt(localStorage.getItem("boosts"));
+    const boosts_stored = parseInt(localStorage.getItem("boosts"));
     if (!isNaN(boosts_stored)) {
         boosts = boosts_stored;
     }
-    var unlocks_stored = parseInt(localStorage.getItem("unlocks"));
+    const unlocks_stored = parseInt(localStorage.getItem("unlocks"));
     if (!isNaN(unlocks_stored)) {
         unlocks = unlocks_stored;
     }
     
+    vis_update()
 }
 
 function delete_local() {
@@ -113,17 +115,17 @@ function vis_update () {
         document.getElementById("game").style.display = "block";
     }
 
-    if (hellos >= "30" && !document.getElementById("autoincb").classList.contains("shopvis")) {
+    if ((hellos >= "30" && !document.getElementById("autoincb").classList.contains("shopvis")) || autos >= 1) {
         make_visible("autoincb");
         document.getElementById("autoincb").classList.add("autoinc");
     }
 
-    if (hellos >= "300" && !document.getElementById("autoincb10").classList.contains("shopvis")) {
+    if ((hellos >= "300" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
         make_visible("autoincb10");
         document.getElementById("autoincb10").classList.add("autoinc");
     }
 
-    if (hellos >= "3000" && !document.getElementById("autoincb100").classList.contains("shopvis")) {
+    if ((hellos >= "3000" && !document.getElementById("autoincb100").classList.contains("shopvis")) || autos >= 10) {
         make_visible("autoincb100");
         document.getElementById("autoincb100").classList.add("autoinc");
     }
@@ -134,17 +136,17 @@ function vis_update () {
         make_visible("autoincp")
     }
 
-    if (autos >= "100" && !document.getElementById("boostinc1").classList.contains("shopvis")) {
+    if ((autos >= "100" && !document.getElementById("boostinc1").classList.contains("shopvis")) || boosts >= 1) {
         make_visible("boostinc1");
         document.getElementById("boostinc1").classList.add("boostinc");
     }
 
-    if (autos >= "1000" && !document.getElementById("boostinc10").classList.contains("shopvis")) {
+    if ((autos >= "1000" && !document.getElementById("boostinc10").classList.contains("shopvis")) || boosts >= 10) {
         make_visible("boostinc10");
         document.getElementById("boostinc10").classList.add("boostinc");
     }
 
-    if (autos >= "10000" && !document.getElementById("boostinc100").classList.contains("shopvis")) {
+    if ((autos >= "10000" && !document.getElementById("boostinc100").classList.contains("shopvis")) || boosts >= 100) {
         make_visible("boostinc100");
         document.getElementById("boostinc100").classList.add("boostinc");
     }
@@ -197,8 +199,7 @@ function auto_decline (times) {
 
 function purchase(item, times, spend) {
     console.log("Clicked with arg: " + item + ", " + times)
-    if (item == "auto" && hellos >= times * 30) {
-
+    if (item == "auto" && (!spend || hellos >= times * 30)) {
         for (i = 0; i < times; i++) {
             autos += 1;
             if (spend) {
