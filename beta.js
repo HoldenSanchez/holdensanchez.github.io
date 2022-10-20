@@ -5,6 +5,7 @@ var auto_timer = 10000;
 var autoOverflow = 1;
 var boosts = 0;
 var change = true;
+var unlocks = 0;
 
 // Main function, has very little in it now but may add more as functions increase
 
@@ -22,6 +23,7 @@ function save() {
     localStorage.setItem("hellos", hellos);
     localStorage.setItem("autos", autos);
     localStorage.setItem("boosts", boosts);
+    localStorage.setItem("unlocks", unlocks);
 }
 
 function load() {
@@ -38,6 +40,10 @@ function load() {
     if (!isNaN(boosts_stored)) {
         boosts = boosts_stored;
     }
+    const unlocks_stored = parseInt(localStorage.getItem("unlocks"));
+    if (!isNaN(unlocks_stored)) {
+        unlocks = unlocks_stored;
+    }
     
     vis_update()
 }
@@ -47,6 +53,21 @@ function delete_local() {
     localStorage.removeItem("autos");
     localStorage.removeItem("boosts");
     localStorage.removeItem("unlocks");
+}
+
+// Enters the main game by calling the other js script
+
+function enterworld() {
+    if (hellos >= 10000 && autos >= 1000 && boosts == 200) {
+        hellos -= 10000;
+        autos -= 1000;
+        boosts -= 200;
+        unlocks = 1;
+
+        save();
+
+        make_visible("enterworlda");
+    }
 }
 
 // Allows things to be edited and returned to a "defualt" state after a preset amount of time
@@ -138,6 +159,12 @@ function vis_update () {
 
     if (boosts >= 1) {
         make_visible("boostincp");
+    }
+
+    // Loads world tab
+
+    if (unlocks >= 1) {
+        make_visible("enterworlda");
     }
 
     // Updates elements that display how much of each "currency" you have
