@@ -96,7 +96,7 @@ function vis_update () {
 
     if ((hellos >= "30" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
         make_visible("autoincb1");
-        document.getElementById("autoincb").classList.add("autoinc");
+        document.getElementById("autoincb1").classList.add("autoinc");
     }
 
     if ((hellos >= "300" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
