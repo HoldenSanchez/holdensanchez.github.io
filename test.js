@@ -33,7 +33,7 @@ function load() {
     }
     var autos_stored = parseInt(localStorage.getItem("autos"));
     if (!isNaN(autos_stored)) {
-        autos = autos_stored;
+        purchase("auto", autos_stored)
     }
     var boosts_stored = parseInt(localStorage.getItem("boosts"));
     if (!isNaN(boosts_stored)) {
@@ -48,6 +48,9 @@ function load() {
 
 function delete_local() {
     localStorage.removeItem("hellos");
+    localStorage.removeItem("autos");
+    localStorage.removeItem("boosts");
+    localStorage.removeItem("unlocks");
 }
 
 // Enters the main game by calling the other js script
@@ -125,7 +128,11 @@ function vis_update () {
         document.getElementById("autoincb100").classList.add("autoinc");
     }
 
-    // Boost inrement elements visibility settings
+    // Auto increment elements visibility settings
+
+    if (autos >= 0) {
+        make_visible("autoincp")
+    }
 
     if (autos >= "100" && !document.getElementById("boostinc1").classList.contains("shopvis")) {
         make_visible("boostinc1");
@@ -142,8 +149,14 @@ function vis_update () {
         document.getElementById("boostinc100").classList.add("boostinc");
     }
 
+    // Boost increment elements visibility settings
+
     if (boosts >= 1 && unlocks == 0) {
         make_visible("enterworld");
+    }
+
+    if (boosts >= 0) {
+        make_visible("boostincp");
     }
 
     // Loads world tab
@@ -182,16 +195,15 @@ function auto_decline (times) {
 
 // General function for buying "currencies"
 
-function purchase(item, times) {
+function purchase(item, times, spend) {
     console.log("Clicked with arg: " + item + ", " + times)
     if (item == "auto" && hellos >= times * 30) {
 
-        if (autos == 0) {
-            make_visible("autoincp")
-        }
         for (i = 0; i < times; i++) {
             autos += 1;
-            hellos -= 30;
+            if (spend) {
+                hellos -= 30;
+            }
             
             if (autos == 1) {
                 t = setInterval(auto_increment, auto_timer);
@@ -228,7 +240,9 @@ function purchase(item, times) {
 
         for (i = 0; i < times && boosts < 200; i++) {
             boosts += 1;
-            timespayed++;
+            if (spend) {
+                timespayed++;
+            }
         }
 
         auto_decline(100 * timespayed);
