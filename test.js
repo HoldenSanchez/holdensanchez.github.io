@@ -130,7 +130,7 @@ function vis_update () {
 
     // Auto increment elements visibility settings
 
-    if (autos >= 0) {
+    if (autos >= 1) {
         make_visible("autoincp")
     }
 
@@ -155,7 +155,7 @@ function vis_update () {
         make_visible("enterworld");
     }
 
-    if (boosts >= 0) {
+    if (boosts >= 1) {
         make_visible("boostincp");
     }
 
