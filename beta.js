@@ -235,7 +235,13 @@ function purchase(item, times, spend) {
         
     }
 
-    else if (item == "boost" && autos >= 100 * times && change) {
+    else if (item == "auto") {
+        document.getElementById("autoinc" + times).innerText = "Cant Afford!";
+        a = setInterval(text_defaults, 5000, ["autoinc" + times, "Hello, Auto x"+ times + "! ",  
+                                                                    "(" + 30 * times + " Hellos)"]); 
+    }
+
+    if (item == "boost" && autos >= 100 * times && change) {
 
         timespayed = 0;
 
@@ -251,13 +257,19 @@ function purchase(item, times, spend) {
         if (boosts >= 200) {
             change = false;
             console.log("working");
-            document.getElementById("boostinc" + times).innerText = "Maxed";
+            document.getElementById("boostinc" + times).innerText = "Maxed!";
             a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
                                                                     "(" + 100 * times + " Autos)"]); 
         }
         if (boosts >= 0 && !document.getElementById("boostincp").classList.contains("shopvis")) {
             make_visible("boostincp");
         }
+    }
+
+    else if (item == "boost") {
+        document.getElementById("boostinc" + times).innerText = "Cant Afford!";
+        a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
+                                                                    "(" + 100 * times + " Autos)"]); 
     }
 
     vis_update()
