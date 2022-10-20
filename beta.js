@@ -115,7 +115,7 @@ function vis_update () {
         document.getElementById("game").style.display = "block";
     }
 
-    if ((hellos >= "30" && !document.getElementById("autoincb").classList.contains("shopvis")) || autos >= 1) {
+    if ((hellos >= "30" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
         make_visible("autoincb");
         document.getElementById("autoincb").classList.add("autoinc");
     }
