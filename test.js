@@ -209,8 +209,8 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "auto") {
-        document.getElementById("autoinc" + times).innerText = "Cant Afford!";
-        a = setInterval(text_defaults, 5000, ["autoinc" + times, "Hello, Auto x"+ times + "! ",  
+        document.getElementById("autoincb" + times).innerText = "Cant Afford!";
+        a = setInterval(text_defaults, 5000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
                                                                     "(" + 30 * times + " Hellos)"]); 
     }
     
