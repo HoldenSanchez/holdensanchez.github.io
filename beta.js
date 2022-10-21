@@ -235,7 +235,8 @@ function purchase(item, times, spend) {
         
     }
 
-    else if (item == "auto") {
+    else if (item == "auto" && change) {
+        change = false;
         document.getElementById("autoincb" + times).innerText = "Cant Afford!";
         a = setInterval(text_defaults, 5000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
                                                                     "(" + 20 * times + " Hellos)"]); 
@@ -254,7 +255,7 @@ function purchase(item, times, spend) {
 
         auto_decline(100 * timespayed);
 
-        if (boosts >= 200) {
+        if (boosts >= 200 && change) {
             change = false;
             console.log("working");
             document.getElementById("boostinc" + times).innerText = "Maxed!";
@@ -266,7 +267,8 @@ function purchase(item, times, spend) {
         }
     }
 
-    else if (item == "boost") {
+    else if (item == "boost" && change) {
+        change = false;
         document.getElementById("boostinc" + times).innerText = "Cant Afford!";
         a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
                                                                     "(" + 100 * times + " Autos)"]); 
