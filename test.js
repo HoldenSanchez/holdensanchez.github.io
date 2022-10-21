@@ -173,11 +173,11 @@ function auto_decline (times) {
 
 function purchase(item, times, spend) {
     console.log("Clicked with arg: " + item + ", " + times)
-    if (item == "auto" && (!spend || hellos >= times * 30)) {
+    if (item == "auto" && (!spend || hellos >= times * 20)) {
         for (i = 0; i < times; i++) {
             autos += 1;
             if (spend) {
-                hellos -= 30;
+                hellos -= 20;
             }
             
             if (autos == 1) {
@@ -213,7 +213,7 @@ function purchase(item, times, spend) {
         change = false;
         document.getElementById("autoincb" + times).innerText = "Cant Afford!";
         a = setInterval(text_defaults, 5000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
-                                                                    "(" + 30 * times + " Hellos)"]); 
+                                                                    "(" + 20 * times + " Hellos)"]); 
     }
     
     else if (item == "boost" && autos >= 100 * times && change) {
