@@ -115,17 +115,17 @@ function vis_update () {
         document.getElementById("game").style.display = "block";
     }
 
-    if ((hellos >= "30" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
+    if ((hellos >= "20" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
         make_visible("autoincb1");
         document.getElementById("autoincb1").classList.add("autoinc");
     }
 
-    if ((hellos >= "300" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
+    if ((hellos >= "200" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
         make_visible("autoincb10");
         document.getElementById("autoincb10").classList.add("autoinc");
     }
 
-    if ((hellos >= "3000" && !document.getElementById("autoincb100").classList.contains("shopvis")) || autos >= 100) {
+    if ((hellos >= "2000" && !document.getElementById("autoincb100").classList.contains("shopvis")) || autos >= 100) {
         make_visible("autoincb100");
         document.getElementById("autoincb100").classList.add("autoinc");
     }
@@ -199,11 +199,11 @@ function auto_decline (times) {
 
 function purchase(item, times, spend) {
     console.log("Clicked with arg: " + item + ", " + times)
-    if (item == "auto" && (!spend || hellos >= times * 30)) {
+    if (item == "auto" && (!spend || hellos >= times * 20)) {
         for (i = 0; i < times; i++) {
             autos += 1;
             if (spend) {
-                hellos -= 30;
+                hellos -= 20;
             }
             
             if (autos == 1) {
@@ -238,7 +238,7 @@ function purchase(item, times, spend) {
     else if (item == "auto") {
         document.getElementById("autoinc" + times).innerText = "Cant Afford!";
         a = setInterval(text_defaults, 5000, ["autoinc" + times, "Hello, Auto x"+ times + "! ",  
-                                                                    "(" + 30 * times + " Hellos)"]); 
+                                                                    "(" + 20 * times + " Hellos)"]); 
     }
 
     if (item == "boost" && autos >= 100 * times && change) {
