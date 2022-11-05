@@ -5,6 +5,8 @@ var auto_timer = 10000;
 var autoOverflow = 1;
 var boosts = 0;
 var change = true;
+var unlocks = 0;
+
 
 // Main function, has very little in it now but may add more as functions increase
 
@@ -95,20 +97,21 @@ function vis_update () {
         document.getElementById("game").style.display = "block";
     }
 
-    if ((hellos >= "30" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
+    if ((hellos >= "20" && !document.getElementById("autoincb1").classList.contains("shopvis")) || autos >= 1) {
         make_visible("autoincb1");
         document.getElementById("autoincb1").classList.add("autoinc");
     }
 
-    if ((hellos >= "300" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
+    if ((hellos >= "200" && !document.getElementById("autoincb10").classList.contains("shopvis")) || autos >= 10) {
         make_visible("autoincb10");
         document.getElementById("autoincb10").classList.add("autoinc");
     }
 
-    if ((hellos >= "3000" && !document.getElementById("autoincb100").classList.contains("shopvis")) || autos >= 100) {
+    if ((hellos >= "2000" && !document.getElementById("autoincb100").classList.contains("shopvis")) || autos >= 100) {
         make_visible("autoincb100");
         document.getElementById("autoincb100").classList.add("autoinc");
     }
+
 
     // Auto increment elements visibility settings
 

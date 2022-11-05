@@ -1,5 +1,5 @@
-eventcount = 100;
-can = true;
+var eventcount = 100;
+var can = true;
 
 function main() {
     data = load();
