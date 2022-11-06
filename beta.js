@@ -10,6 +10,8 @@ var unlocks = 0;
 // Main function, has very little in it now but may add more as functions increase
 
 function main() {
+    console.log("Messing with console may increase local load times or break game!");
+    
     document.getElementById("game").style.display = "none";
 
     load();

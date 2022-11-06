@@ -7,10 +7,11 @@ var boosts = 0;
 var change = true;
 var unlocks = 0;
 
-
 // Main function, has very little in it now but may add more as functions increase
 
 function main() {
+    console.log("Messing with console may increase local load times or break game!");
+    
     document.getElementById("game").style.display = "none";
 
     load();
@@ -24,6 +25,7 @@ function save() {
     localStorage.setItem("hellos", hellos);
     localStorage.setItem("autos", autos);
     localStorage.setItem("boosts", boosts);
+    localStorage.setItem("unlocks", unlocks);
 }
 
 function load() {
@@ -40,7 +42,11 @@ function load() {
     if (!isNaN(boosts_stored)) {
         boosts = boosts_stored;
     }
-
+    const unlocks_stored = parseInt(localStorage.getItem("unlocks"));
+    if (!isNaN(unlocks_stored)) {
+        unlocks = unlocks_stored;
+    }
+    
     vis_update()
 }
 
@@ -51,10 +57,24 @@ function delete_local() {
     localStorage.removeItem("unlocks");
 }
 
+// Enters the main game by calling the other js script
+
+function enterworld() {
+    if (hellos >= 10000 && autos >= 1000 && boosts == 200) {
+        hellos -= 10000;
+        autos -= 1000;
+        boosts -= 200;
+        unlocks = 1;
+
+        save();
+
+        make_visible("enterworlda");
+    }
+}
+
 // Allows things to be edited and returned to a "defualt" state after a preset amount of time
 
 function text_defaults(items) {
-    change = false;
     document.getElementById(items[0]).innerText = items[1] + items[2];
     clearInterval(a);
     change = true;
@@ -112,7 +132,6 @@ function vis_update () {
         document.getElementById("autoincb100").classList.add("autoinc");
     }
 
-
     // Auto increment elements visibility settings
 
     if (autos >= 1) {
@@ -137,11 +156,17 @@ function vis_update () {
     // Boost increment elements visibility settings
 
     if (boosts >= 1 && unlocks == 0) {
-        //make_visible("enterworld");
+        make_visible("enterworld");
     }
 
     if (boosts >= 1) {
         make_visible("boostincp");
+    }
+
+    // Loads world tab
+
+    if (unlocks >= 1) {
+        make_visible("enterworlda");
     }
 
     // Updates elements that display how much of each "currency" you have
@@ -218,8 +243,8 @@ function purchase(item, times, spend) {
         a = setInterval(text_defaults, 5000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
                                                                     "(" + 20 * times + " Hellos)"]); 
     }
-    
-    else if (item == "boost" && autos >= 100 * times && change) {
+
+    if (item == "boost" && autos >= 100 * times && change) {
 
         timespayed = 0;
 
@@ -235,7 +260,7 @@ function purchase(item, times, spend) {
         if (boosts >= 200 && change) {
             change = false;
             console.log("working");
-            document.getElementById("boostinc" + times).innerText = "Maxed";
+            document.getElementById("boostinc" + times).innerText = "Maxed!";
             a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
                                                                     "(" + 100 * times + " Autos)"]); 
         }
