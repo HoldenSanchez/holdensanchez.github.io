@@ -137,7 +137,7 @@ function vis_update () {
     // Boost increment elements visibility settings
 
     if (boosts >= 1 && unlocks == 0) {
-        make_visible("enterworld");
+        //make_visible("enterworld");
     }
 
     if (boosts >= 1) {
