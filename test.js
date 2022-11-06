@@ -40,7 +40,7 @@ function load() {
     if (!isNaN(boosts_stored)) {
         boosts = boosts_stored;
     }
-    
+
     vis_update()
 }
 
