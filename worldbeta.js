@@ -69,20 +69,25 @@ function delay () {
 
 function do_event(number) {
     if (can) {
-        if (number <= 90) {
-            found = Math.floor(Math.random() * (hellos/2));
+        if (number <= 90 && number > 30) {
+            found = Math.floor(Math.random() * (hellos/3));
             document.getElementById("results").innerText = "Results: Found " + found + " Hellos!";
             hellos += found;
             vis_update()
             localStorage.setItem("hellos", hellos);
         }
         if (number >= 91) {
-            stolen = Math.floor(Math.random() * (hellos/3));
+            stolen = Math.floor(Math.random() * (hellos/2));
             document.getElementById("results").innerText = "Results: Some Burglar Stole " + stolen + " Hellos!";
             hellos -= stolen;
             vis_update();
             localStorage.setItem("hellos", hellos);
         }
+        if (number >= 20 && number <= 30){
+            
+            console.log("Found Key");
+        }
+
         delay_time = 30
         can = false
         t = setInterval(delay, 1000)

@@ -1,4 +1,8 @@
-var hellos, autos, old_auto, boosts, unlocks = 0;
+var hellos = 0;
+var autos = 0; 
+var old_auto = 0;
+var boosts = 0; 
+var unlocks = 0;
 var auto_timer = 10000;
 var autoOverflow = 1;
 var change = true;

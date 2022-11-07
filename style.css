@@ -6,6 +6,10 @@ p {
     color: white;
 }
 
+div {
+    margin-top: 10px;
+}
+
 .shopvis {
     display: block;
 }
