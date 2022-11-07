@@ -1,6 +1,7 @@
 var eventcount = 100;
 var can = true;
 var delay_time = 0;
+var items = [];
 
 function main() {
     data = load();
@@ -41,6 +42,7 @@ function delete_local() {
     localStorage.removeItem("autos");
     localStorage.removeItem("boosts");
     localStorage.removeItem("unlocks");
+    localStorage.removeItem("items");
     localStorage.removeItem("delay");
 }
 
@@ -76,16 +78,19 @@ function do_event(number) {
             vis_update()
             localStorage.setItem("hellos", hellos);
         }
-        if (number >= 91) {
+        else if (number >= 91) {
             stolen = Math.floor(Math.random() * (hellos/2));
             document.getElementById("results").innerText = "Results: Some Burglar Stole " + stolen + " Hellos!";
             hellos -= stolen;
             vis_update();
             localStorage.setItem("hellos", hellos);
         }
-        if (number >= 20 && number <= 30){
-            
-            console.log("Found Key");
+        else if (number >= 20 && number <= 30 && !items.includes("greetings")){
+            items.push("greetings");
+            document.getElementById("results").innerText = "Results: You Found Some Greetings!";
+        }
+        else {
+            document.getElementById("results").innerText = "Results: You Found Nothing!";
         }
 
         delay_time = 30

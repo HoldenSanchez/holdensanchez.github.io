@@ -13,15 +13,21 @@
     <button type="button" onclick="increment()">Hello, Increment!</button>
     <div class="game" id="game">
         <p id="hellos">Hellos: 0</p>
-
-        <button id="autoincb1" class="shopinvis" onclick='purchase("auto", 1, true)'>Hello, Auto x1! (20 Hellos)</button>
-        <button id="autoincb10" class="shopinvis" onclick='purchase("auto", 10, true)'>Hello, Auto x10! (200 Hellos)</button>
-        <button id="autoincb100" class="shopinvis" onclick='purchase("auto", 100, true)'>Hello, Auto x100! (2000 Hellos)</button>
-        <p id="autoincp" class="shopinvis">Hello, Autos: 0</p>
-        <button id="boostinc1" class="shopinvis" onclick='purchase("boost", 1, true)'>Hello, Boost x1! (100 Autos)</button>
-        <button id="boostinc10" class="shopinvis" onclick='purchase("boost", 10, true)'>Hello, Boost x10! (1000 Autos)</button>
-        <button id="boostinc100" class="shopinvis" onclick='purchase("boost", 100, true)'>Hello, Boost x100! (10000 Autos)</button>
-        <p id="boostincp" class="shopinvis">Hello, Boosts: 0</p>
+        <div>
+            <button id="autoincb1" class="shopinvis" onclick='purchase("auto", 1, true)'>Hello, Auto x1! (20 Hellos)</button>
+            <button id="autoincb10" class="shopinvis" onclick='purchase("auto", 10, true)'>Hello, Auto x10! (200 Hellos)</button>
+            <button id="autoincb100" class="shopinvis" onclick='purchase("auto", 100, true)'>Hello, Auto x100! (2000 Hellos)</button>
+            <p id="autoincp" class="shopinvis">Hello, Autos: 0</p>
+        </div>
+        <div>
+            <button id="boostinc1" class="shopinvis" onclick='purchase("boost", 1, true)'>Hello, Boost x1! (100 Autos)</button>
+            <button id="boostinc10" class="shopinvis" onclick='purchase("boost", 10, true)'>Hello, Boost x10! (1000 Autos)</button>
+            <button id="boostinc100" class="shopinvis" onclick='purchase("boost", 100, true)'>Hello, Boost x100! (10000 Autos)</button>
+            <p id="boostincp" class="shopinvis">Hello, Boosts: 0</p>
+        </div>
+        <div id="inventory">
+            <p id="have"class="shopinvis have">You Have: </p>
+        </div>
         <button id="enterworld" class="shopinvis" onclick='enterworld()'>Enter World! (H: 10000, A: 1000, B: 200)</button>
     </div>
 </body>

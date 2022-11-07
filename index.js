@@ -6,6 +6,7 @@ var unlocks = 0;
 var auto_timer = 10000;
 var autoOverflow = 1;
 var change = true;
+var items = [];
 
 // Main function, has very little in it now but may add more as functions increase
 
@@ -26,26 +27,26 @@ function save() {
     localStorage.setItem("autos", autos);
     localStorage.setItem("boosts", boosts);
     localStorage.setItem("unlocks", unlocks);
+    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function load() {
     const hellos_stored = parseInt(localStorage.getItem("hellos"));
-    if (!isNaN(hellos_stored)) {
+    if (!isNaN(hellos_stored))
         hellos = hellos_stored;
-    }
     const autos_stored = parseInt(localStorage.getItem("autos"));
-    if (!isNaN(autos_stored) && autos != autos_stored) {
+    if (!isNaN(autos_stored) && autos != autos_stored)
         console.log(autos_stored)
         purchase("auto", autos_stored, false)
-    }
     const boosts_stored = parseInt(localStorage.getItem("boosts"));
-    if (!isNaN(boosts_stored)) {
+    if (!isNaN(boosts_stored))
         boosts = boosts_stored;
-    }
     const unlocks_stored = parseInt(localStorage.getItem("unlocks"));
-    if (!isNaN(unlocks_stored)) {
+    if (!isNaN(unlocks_stored)) 
         unlocks = unlocks_stored;
-    }
+    const items_stored = JSON.parse(localStorage.getItem("items"));
+    if (items_stored != null)
+        items = items_stored
     
     vis_update()
 }
@@ -55,6 +56,8 @@ function delete_local() {
     localStorage.removeItem("autos");
     localStorage.removeItem("boosts");
     localStorage.removeItem("unlocks");
+    localStorage.removeItem("items");
+    localStorage.removeItem("delay");
 }
 
 // Enters the main game by calling the other js script

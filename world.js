@@ -1,6 +1,7 @@
 var eventcount = 100;
 var can = true;
 var delay_time = 0;
+var items = []
 
 function main() {
     data = load();
@@ -41,6 +42,7 @@ function delete_local() {
     localStorage.removeItem("autos");
     localStorage.removeItem("boosts");
     localStorage.removeItem("unlocks");
+    localStorage.removeItem("items");
     localStorage.removeItem("delay");
 }
 
