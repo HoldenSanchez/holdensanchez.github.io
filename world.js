@@ -1,5 +1,6 @@
 var eventcount = 100;
 var can = true;
+var delay_time = 0;
 
 function main() {
     data = load();
@@ -20,6 +21,10 @@ function load() {
     if (!isNaN(boosts_stored)) {
         boosts = boosts_stored;
     }
+    const delay_stored = parseInt(localStorage.getItem("delay"));
+    if(!isNaN(delay_stored)) {
+        delay_time = delay_stored;
+    }
     
     vis_update()
 }
@@ -28,6 +33,7 @@ function save() {
     localStorage.setItem("hellos", hellos);
     localStorage.setItem("autos", autos);
     localStorage.setItem("boosts", boosts);
+    localStorage.setItem("delay", delay_time);
 }
 
 function delete_local() {
@@ -35,12 +41,18 @@ function delete_local() {
     localStorage.removeItem("autos");
     localStorage.removeItem("boosts");
     localStorage.removeItem("unlocks");
+    localStorage.removeItem("delay");
 }
 
 function vis_update() {
     document.getElementById("hellos").innerText = "Hellos: " + Math.round(hellos);
     document.getElementById("autoincp").innerText = "Hello, Autos: " + autos;
     document.getElementById("boostincp").innerText = "Hello, Boosts: " + boosts;
+
+    if (delay_time > 0 && can) {
+        can = false
+        t = setInterval(delay, 1000)
+    }
 }
 
 function delay () {

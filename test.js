@@ -100,11 +100,16 @@ function auto_increment() {
     vis_update();
 }
 
-// Makes things visivle, just to shorten code and make it easier to read
+// Makes things visible/invisible, just to shorten code and make it easier to read
 
 function make_visible(id) {
     document.getElementById(id).classList.remove("shopinvis");
     document.getElementById(id).classList.add("shopvis");
+}
+
+function make_invisible(id) {
+    document.getElementById(id).classList.remove("shopvis");
+    document.getElementById(id).classList.add("shopinvis");
 }
 
 // Updates what elements are visible
@@ -157,6 +162,10 @@ function vis_update () {
 
     if (boosts >= 1 && unlocks == 0) {
         make_visible("enterworld");
+    }
+
+    if (unlocks == 1) {
+        make_invisible("enterworld");
     }
 
     if (boosts >= 1) {
