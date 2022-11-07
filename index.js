@@ -1,11 +1,7 @@
-var hellos = 0;
-var autos = 0;
-var old_auto = 0;
+var hellos, autos, old_auto, boosts, unlocks = 0;
 var auto_timer = 10000;
 var autoOverflow = 1;
-var boosts = 0;
 var change = true;
-var unlocks = 0;
 
 // Main function, has very little in it now but may add more as functions increase
 
