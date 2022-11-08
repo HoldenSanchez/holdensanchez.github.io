@@ -308,7 +308,7 @@ function purchase(item, times, spend) {
             }
         }
     }
-    else if (times == "max" && items == "boost" && autos >= 100) {
+    else if (times == "max" && items == "boost" && autos >= 100 && boosts < 200) {
         timespayed = 0;
         let max_buy = autos/100
 
