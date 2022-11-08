@@ -26,6 +26,9 @@ function load() {
     if(!isNaN(delay_stored)) {
         delay_time = delay_stored;
     }
+    const items_stored = JSON.parse(localStorage.getItem("items"));
+    if (items_stored != null)
+        items = items_stored
     
     vis_update()
 }
@@ -35,6 +38,7 @@ function save() {
     localStorage.setItem("autos", autos);
     localStorage.setItem("boosts", boosts);
     localStorage.setItem("delay", delay_time);
+    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function delete_local() {
@@ -71,6 +75,7 @@ function delay () {
 
 function do_event(number) {
     if (can) {
+        console.log(number)
         if (number <= 90 && number > 30) {
             found = Math.floor(Math.random() * (hellos/3));
             document.getElementById("results").innerText = "Results: Found " + found + " Hellos!";
@@ -93,7 +98,7 @@ function do_event(number) {
             document.getElementById("results").innerText = "Results: You Found Nothing!";
         }
 
-        delay_time = 30
+        delay_time = 5
         can = false
         t = setInterval(delay, 1000)
     }

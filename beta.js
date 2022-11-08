@@ -23,6 +23,19 @@ function main() {
     vis_update();
 }
 
+function dev_mode(enable) {
+    if (enable) {
+        hellos = 1000000;
+        purchase("auto", 100000, false);
+        boosts = 200; 
+        unlocks = 1;
+    } 
+    else {
+        delete_local();
+        document.location.reload();
+    }
+}
+
 function save() {
     localStorage.setItem("hellos", hellos);
     localStorage.setItem("autos", autos);
@@ -189,9 +202,7 @@ function vis_update () {
             make_visible("have");
         for (i = 0; i < items.length; i++)
         {
-            if (!items_list.includes(items[i])) {
-                document.getElementById().appendChild(document.createElement("p").innerText = items[i])
-            }
+            document.createElement("p").innerText = items[i]
         }
     }
     else
