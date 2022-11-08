@@ -7,11 +7,13 @@ var auto_timer = 10000;
 var autoOverflow = 1;
 var change = true;
 var items = [];
+var items_displayed = [];
+
 
 // Main function, has very little in it now but may add more as functions increase
 
 function main() {
-    console.log("Messing with console may increase local load times or break game!");
+    console.log("Messing with console may increase local load times or break game! Use help() to learn about the console commands!");
     
     document.getElementById("game").style.display = "none";
 
@@ -20,6 +22,26 @@ function main() {
     autosave = setInterval(save, 30000);
 
     vis_update();
+}
+
+function help() {
+    console.log("Do no manually change the value for \"autos\", you need to do purchase(\"auto\", number, false). ");
+    console.log("If you do just change the value for autos, it will not give you the benifits. ");
+    console.log("Use dev_mode(true) to be able to skip through that");
+    console.log("If the value of auto is too high, the browser will crash and you will need to clear cookies!");
+}
+
+function dev_mode(enable) {
+    if (enable) {
+        hellos = 1000000;
+        purchase("auto", 100000, false);
+        boosts = 200; 
+        unlocks = 1;
+    } 
+    else {
+        delete_local();
+        document.location.reload();
+    }
 }
 
 function save() {
@@ -86,7 +108,11 @@ function text_defaults(items) {
 // Normal incrememnt for the click
 
 function increment() {
-    hellos += 1 + boosts;
+    var mod = 0;
+    if (items.includes('greetings')) {
+        mod += 190;
+    }
+    hellos += 1 + boosts + mod;
 
     vis_update();
 
@@ -95,10 +121,14 @@ function increment() {
 // Seperate function to make it easier to think and allows other features to be added in the future
 
 function auto_increment() {
+    var mod = 0;
+    if (items.includes('greetings')) {
+        mod += 100;
+    }
     if (autoOverflow >= 102) {
         autoOverflow = 101
     }
-    hellos += autoOverflow + (1/2 * boosts);
+    hellos += autoOverflow + (1/2 * boosts) + mod;
 
     vis_update();
 }
@@ -181,6 +211,27 @@ function vis_update () {
         make_visible("enterworlda");
     }
 
+    // Updates for inventory
+
+    if (items.length != 0) {
+        if (document.getElementById("have").classList.contains("shopinvis"))
+            make_visible("have");
+        for (i = 0; i < items.length; i++)
+        {   
+            if (!items_displayed.includes(items[i])) {
+                items_displayed.push(items[i])
+                let modified = items[i][0].toUpperCase() + items[i].slice(1);
+                let text = document.createElement("p");
+                text.innerText = modified;
+                text.classList.add("have");
+                text.classList.add("shopvis");
+                document.getElementById("inventory").appendChild(text);
+            }
+        }
+    }
+    else
+        make_invisible("have");
+
     // Updates elements that display how much of each "currency" you have
 
     document.getElementById("hellos").innerText = "Hellos: " + Math.round(hellos);
@@ -195,7 +246,6 @@ function auto_decline (times) {
     for (i = 0; i < times; i++) {
         if (autos > 68 && autos <= 169) {
             autoOverflow -= 1
-            console.log("Ran")
         }
         else if (autos <= 68) {
             auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))))
@@ -212,7 +262,6 @@ function auto_decline (times) {
 // General function for buying "currencies"
 
 function purchase(item, times, spend) {
-    console.log("Clicked with arg: " + item + ", " + times)
     if (item == "auto" && (!spend || hellos >= times * 20)) {
         for (i = 0; i < times; i++) {
             autos += 1;
