@@ -2,6 +2,7 @@ var eventcount = 100;
 var can = true;
 var delay_time = 0;
 var items = [];
+var dev_delay = 30
 
 function main() {
     data = load();
@@ -56,8 +57,8 @@ function vis_update() {
     document.getElementById("boostincp").innerText = "Hello, Boosts: " + boosts;
 
     if (delay_time > 0 && can) {
-        can = false
-        t = setInterval(delay, 1000)
+        can = false;
+        t = setInterval(delay, 1000);
     }
 }
 
@@ -98,9 +99,9 @@ function do_event(number) {
             document.getElementById("results").innerText = "Results: You Found Nothing!";
         }
 
-        delay_time = 5
-        can = false
-        t = setInterval(delay, 1000)
+        delay_time = dev_delay;
+        can = false;
+        t = setInterval(delay, 1000);
     }
 }
 
