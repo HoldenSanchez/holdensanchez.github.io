@@ -169,6 +169,10 @@ function vis_update () {
         make_visible("autoincb100");
         document.getElementById("autoincb100").classList.add("autoinc");
     }
+    if ((hellos >= "2000" && !document.getElementById("autoincbmax").classList.contains("shopvis")) || autos >= 100) {
+        make_visible("autoincbmax");
+        document.getElementById("autoincbmax").classList.add("autoinc");
+    }
 
     // Auto increment elements visibility settings
 
@@ -201,7 +205,7 @@ function vis_update () {
         make_invisible("enterworld");
     }
 
-    if (boosts >= 1) {
+    if (boosts >= 1 && !document.getElementById("boostincp").classList.contains("shopvis")) {
         make_visible("boostincp");
     }
 
@@ -262,7 +266,67 @@ function auto_decline (times) {
 // General function for buying "currencies"
 
 function purchase(item, times, spend) {
-    if (item == "auto" && (!spend || hellos >= times * 20)) {
+    if (times == "max" && item == "auto" && hellos >= 20) {
+        let max_buy = hellos/20
+        for (i = 0; i < max_buy; i++) {
+            if (spend) {
+                hellos -= 20;
+            }
+
+            if (hellos < 0) {
+                console.log("Broke")
+                hellos += 20;
+                break;
+            }
+
+            autos += 1;
+            
+            if (autos == 1) {
+                t = setInterval(auto_increment, auto_timer);
+                autoOverflow = 1
+            }
+
+            else if (autos > 1 && auto_timer >= 1000) {
+                if (auto_timer > 1000){ 
+                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))));
+                    old_auto = autos
+                }
+                if(typeof t !== 'undefined') {
+                    clearInterval(t);
+                }
+                t = setInterval(auto_increment, auto_timer);
+                if (auto_timer <= 1000) {
+                    autoOverflow = autos - old_auto + 1
+                }
+            }
+
+            if(auto_timer < 1000) {
+                console.log("1000 at: " + autos)
+                auto_timer = 1000;
+                clearInterval(t);
+                t = setInterval(auto_increment, auto_timer);
+            }
+        }
+    }
+    else if (times == "max" && items == "boost" && autos >= 100) {
+        timespayed = 0;
+        let max_buy = autos/100
+
+        for (i = 0; i < max_buy && boosts < 200; i++) {
+            if (autos < 0)
+            {
+                console.log("Broke");
+                break;
+            }
+            boosts += 1;
+            if (spend) {
+                timespayed++;
+            }
+        }
+
+        auto_decline(100 * timespayed);
+    }
+    else if (item == "auto" && (!spend || hellos >= times * 20)) {
         for (i = 0; i < times; i++) {
             autos += 1;
             if (spend) {
@@ -298,14 +362,7 @@ function purchase(item, times, spend) {
         
     }
 
-    else if (item == "auto" && change) {
-        change = false;
-        document.getElementById("autoincb" + times).innerText = "Cant Afford!";
-        a = setInterval(text_defaults, 5000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
-                                                                    "(" + 20 * times + " Hellos)"]); 
-    }
-
-    if (item == "boost" && autos >= 100 * times && change) {
+    else if (item == "boost" && autos >= 100 * times && change) {
 
         timespayed = 0;
 
@@ -317,23 +374,19 @@ function purchase(item, times, spend) {
         }
 
         auto_decline(100 * timespayed);
-
-        if (boosts >= 200 && change) {
-            change = false;
-            console.log("working");
-            document.getElementById("boostinc" + times).innerText = "Maxed!";
-            a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
-                                                                    "(" + 100 * times + " Autos)"]); 
-        }
-        if (boosts >= 0 && !document.getElementById("boostincp").classList.contains("shopvis")) {
-            make_visible("boostincp");
-        }
     }
 
-    else if (item == "boost" && change) {
+    else if (item == "auto" && change && times != "max") {
+        change = false;
+        document.getElementById("autoincb" + times).innerText = "Cant Afford!";
+        a = setInterval(text_defaults, 3000, ["autoincb" + times, "Hello, Auto x"+ times + "! ",  
+                                                                    "(" + 20 * times + " Hellos)"]); 
+    }
+
+    else if (item == "boost" && change && times != "max") {
         change = false;
         document.getElementById("boostinc" + times).innerText = "Cant Afford!";
-        a = setInterval(text_defaults, 5000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
+        a = setInterval(text_defaults, 3000, ["boostinc" + times, "Hello, Boost x"+ times + "! ",  
                                                                     "(" + 100 * times + " Autos)"]); 
     }
 
