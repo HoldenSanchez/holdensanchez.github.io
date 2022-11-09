@@ -266,6 +266,8 @@ function auto_decline (times) {
 // General function for buying "currencies"
 
 function purchase(item, times, spend) {
+    if (items.includes("jar"))
+        var cap = 100
     if (times == "max" && item == "auto" && hellos >= 20) {
         let max_buy = hellos/20
         for (i = 0; i < max_buy; i++) {
@@ -308,11 +310,11 @@ function purchase(item, times, spend) {
             }
         }
     }
-    else if (times == "max" && items == "boost" && autos >= 100 && boosts < 200) {
+    else if (times == "max" && items == "boost" && autos >= 100 && boosts < 200 + cap) {
         timespayed = 0;
         let max_buy = autos/100
 
-        for (i = 0; i < max_buy && boosts < 200; i++) {
+        for (i = 0; i < max_buy && boosts < 200 + cap; i++) {
             if (autos < 0)
             {
                 console.log("Broke");
@@ -366,7 +368,7 @@ function purchase(item, times, spend) {
 
         timespayed = 0;
 
-        for (i = 0; i < times && boosts < 200; i++) {
+        for (i = 0; i < times && boosts < 200 + cap; i++) {
             boosts += 1;
             if (spend) {
                 timespayed++;
