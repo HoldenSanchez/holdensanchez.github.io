@@ -96,29 +96,29 @@ function delay () {
 function do_event(number, can_overide) {
     if (can_overide) {
         console.log(number)
-        document.getElementById("bot_results").innerText = "Results: Bot Found Nothing!";
-        if (number < 190 && number > 100) {
+        document.getElementById("bot_results").innerText = "Bot Last Found: Nothing!";
+        if (number > 100) {
             found = Math.floor(Math.random() * (hellos/3));
-            document.getElementById("bot_results").innerText = "Results: Bot Found " + found + " Hellos!";
+            document.getElementById("bot_results").innerText = "Bot Last Found: " + found + " Hellos!";
             hellos += found;
             vis_update()
             localStorage.setItem("hellos", hellos);
         }
         if (number >= 70 && number <= 90 && !items.includes("greetings")){
             items.push("greetings");
-            document.getElementById("bot_results").innerText = "Results: Bot Found Some Greetings!";
+            document.getElementById("bot_results").innerText = "Bot Last Found: Some Greetings!";
         }
         if (number >= 20 && number < 40 && !items.includes("jar")) {
             items.push("jar");
-            document.getElementById("bot_results").innerText = "Results: Bot Found A Jar Labeled \"For Boosts\"!";
+            document.getElementById("bot_results").innerText = "Bot Last Found: A Jar Labeled \"For Boosts\"!";
         }
         if (number < 10 && number != 2 && !items.includes("world key")) {
-            items.push("key");
-            document.getElementById("bot_results").innerText = "Results: Bot Found The World Key!";
+            items.push("world key");
+            document.getElementById("bot_results").innerText = "Bot Last Found: The World Key!";
         }
         if (number == 2 && !items.includes("dev stone")) {
             items.push("dev stone");
-            document.getElementById("bot_results").innerText = "Results: Bot Found... A Rock!";
+            document.getElementById("bot_results").innerText = "Bot Last Found: ... A Rock!";
         }
     }
 
@@ -148,7 +148,7 @@ function do_event(number, can_overide) {
             document.getElementById("results").innerText = "Results: You Found A Jar Labeled \"For Boosts\"!";
         }
         if (number < 10 && number != 2 && !items.includes("world key")) {
-            items.push("key");
+            items.push("world key");
             document.getElementById("results").innerText = "Results: You Found The World Key!";
         }
         if (number == 2 && !items.includes("dev stone")) {
