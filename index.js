@@ -363,7 +363,7 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
-
+        console.log("W")
         timespayed = 0;
 
         for (i = 0; i < times && boosts < 200; i++) {

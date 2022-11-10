@@ -3,6 +3,7 @@ var autos = 0;
 var old_auto = 0;
 var boosts = 0; 
 var unlocks = 0;
+var cap = 0;
 var auto_timer = 10000;
 var autoOverflow = 1;
 var change = true;
@@ -267,7 +268,7 @@ function auto_decline (times) {
 
 function purchase(item, times, spend) {
     if (items.includes("jar"))
-        var cap = 100
+        cap = 100
     if (times == "max" && item == "auto" && hellos >= 20) {
         let max_buy = hellos/20
         for (i = 0; i < max_buy; i++) {
@@ -365,6 +366,8 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
+
+        console.log("Works");
 
         timespayed = 0;
 
