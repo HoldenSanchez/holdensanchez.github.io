@@ -3,6 +3,7 @@ var autos = 0;
 var old_auto = 0;
 var boosts = 0; 
 var unlocks = 0;
+var cap = 0;
 var auto_timer = 10000;
 var autoOverflow = 1;
 var change = true;
@@ -266,6 +267,8 @@ function auto_decline (times) {
 // General function for buying "currencies"
 
 function purchase(item, times, spend) {
+    if (items.includes("jar"))
+        cap = 100
     if (times == "max" && item == "auto" && hellos >= 20) {
         let max_buy = hellos/20
         for (i = 0; i < max_buy; i++) {
@@ -308,11 +311,11 @@ function purchase(item, times, spend) {
             }
         }
     }
-    else if (times == "max" && items == "boost" && autos >= 100 && boosts < 200) {
+    else if (times == "max" && items == "boost" && autos >= 100 && boosts < 200 + cap) {
         timespayed = 0;
         let max_buy = autos/100
 
-        for (i = 0; i < max_buy && boosts < 200; i++) {
+        for (i = 0; i < max_buy && boosts < 200 + cap; i++) {
             if (autos < 0)
             {
                 console.log("Broke");
@@ -363,10 +366,12 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
-        console.log("W")
+
+        console.log("Works");
+
         timespayed = 0;
 
-        for (i = 0; i < times && boosts < 200; i++) {
+        for (i = 0; i < times && boosts < 200 + cap; i++) {
             boosts += 1;
             if (spend) {
                 timespayed++;
