@@ -213,7 +213,7 @@ function vis_update () {
     // Loads world tab
 
     if (unlocks >= 1) {
-        make_visible("enterworlda");
+        make_visible("enterworld");
     }
 
     // Updates for inventory

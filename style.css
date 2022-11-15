@@ -52,3 +52,12 @@ footer {
 #have {
     margin-top: 5%;
 }
+
+.row {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.header {
+    margin-right: 5px
+}

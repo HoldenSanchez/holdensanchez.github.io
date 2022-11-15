@@ -5,8 +5,10 @@
 
 <head>
     <title>Hello, World!</title>
-    <a id="return" href="./beta.html" onclick="save()">Hello</a>
-</head>
+    <div id="enterworld">
+        <a href="./beta.html" onclick="save()" class="header">Hello</a>
+        <a href="./worldbeta.html" onclick="save()" class="header">World</a>
+    </div></head>
 
 <body>
     <div class="cdisplay">
@@ -21,6 +23,15 @@
         <p id="results">Go Explore!</p>
         <p id="bot_timer">Bot Exploring In: </p>
         <p id="bot_results">Bot Will Explore!</p>
+    </div>
+
+    <div class="map">
+        <pre id="row1" class="row" style="color:white;"></pre>
+        <pre id="row2" class="row" style="color:white;"></pre>
+        <pre id="row3" class="row" style="color:white;"></pre>
+        <pre id="row4" class="row" style="color:white;"></pre>
+        <pre id="row5" class="row" style="color:white;"></pre>
+        <pre id="row6" class="row" style="color:white;"></pre>
     </div>
 </body>
 

@@ -112,9 +112,9 @@ function do_event(number, can_overide) {
             items.push("jar");
             document.getElementById("bot_results").innerText = "Bot Last Found: A Jar Labeled \"For Boosts\"!";
         }
-        if (number < 10 && number != 2 && !items.includes("world key")) {
-            items.push("world key");
-            document.getElementById("bot_results").innerText = "Bot Last Found: The World Key!";
+        if (number < 10 && number != 2 && !items.includes("boots")) {
+            items.push("boots");
+            document.getElementById("results").innerText = "Bot Last Found: Some Boots For You!";
         }
         if (number == 2 && !items.includes("dev stone")) {
             items.push("dev stone");
@@ -147,9 +147,9 @@ function do_event(number, can_overide) {
             items.push("jar");
             document.getElementById("results").innerText = "Results: You Found A Jar Labeled \"For Boosts\"!";
         }
-        if (number < 10 && number != 2 && !items.includes("world key")) {
-            items.push("world key");
-            document.getElementById("results").innerText = "Results: You Found The World Key!";
+        if (number < 10 && number != 2 && !items.includes("boots")) {
+            items.push("boots");
+            document.getElementById("results").innerText = "Results: You Found Some Boots!";
         }
         if (number == 2 && !items.includes("dev stone")) {
             items.push("dev stone");
