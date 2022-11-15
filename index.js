@@ -304,7 +304,6 @@ function purchase(item, times, spend) {
             }
 
             if(auto_timer < 1000) {
-                console.log("1000 at: " + autos)
                 auto_timer = 1000;
                 clearInterval(t);
                 t = setInterval(auto_increment, auto_timer);
@@ -318,7 +317,6 @@ function purchase(item, times, spend) {
         for (i = 0; i < max_buy && boosts < 200 + cap; i++) {
             if (autos < 0)
             {
-                console.log("Broke");
                 break;
             }
             boosts += 1;
@@ -356,7 +354,6 @@ function purchase(item, times, spend) {
             }
 
             if(auto_timer < 1000) {
-                console.log("1000 at: " + autos)
                 auto_timer = 1000;
                 clearInterval(t);
                 t = setInterval(auto_increment, auto_timer);
@@ -366,8 +363,6 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
-
-        console.log("Works");
 
         timespayed = 0;
 
