@@ -9,7 +9,7 @@ var autoOverflow = 1;
 var change = true;
 var items = [];
 var items_displayed = [];
-
+var color_mode = "light";
 
 // Main function, has very little in it now but may add more as functions increase
 
@@ -70,7 +70,7 @@ function load() {
     const items_stored = JSON.parse(localStorage.getItem("items"));
     if (items_stored != null)
         items = items_stored
-    
+        
     vis_update()
 }
 
@@ -127,7 +127,7 @@ function auto_increment() {
         mod += 100;
     }
     if (autoOverflow >= 102) {
-        autoOverflow = 101
+        autoOverflow = 101;
     }
     hellos += autoOverflow + (1/2 * boosts) + mod;
 

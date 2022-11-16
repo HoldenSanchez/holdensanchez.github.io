@@ -1,0 +1,63 @@
+body {
+    background-color: #f8f8f8;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+div {
+    margin-top: 10px;
+}
+
+.shopvis {
+    display: block;
+}
+
+.shopinvis {
+    display: none;
+}
+
+.autoinc {
+    display: inline-block;
+}
+
+.boostinc {
+    display: inline-block;
+}
+
+a {
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+    display: inline-block;
+}
+
+.save {
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+    text-decoration: underline;
+    display: inline;
+    cursor: pointer;
+}
+
+.explore {
+    margin-top: 80px;
+}
+
+#have {
+    margin-top: 5%;
+}
+
+.row {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.header {
+    margin-right: 5px
+}
