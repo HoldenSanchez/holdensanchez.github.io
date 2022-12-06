@@ -12,10 +12,7 @@ button {
     border: 4px rgb(104, 103, 103);
     color: white;
     text-align: center;
-    padding: 8px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
+    padding: 4px;
     transition: all 0.5s;
     cursor: pointer;
 }
