@@ -6,6 +6,20 @@ p {
     color: white;
 }
 
+button {
+    background-color: rgb(87, 87, 87);
+    border-radius: 3px;
+    border: 4px rgb(104, 103, 103);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
 div {
     margin-top: 10px;
 }

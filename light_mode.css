@@ -10,6 +10,20 @@ div {
     margin-top: 10px;
 }
 
+button {
+    background-color: #d1d1d1;
+    border-radius: 3px;
+    border: 4px #cccccc;
+    color: #000000;
+    text-align: center;
+    padding: 8px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
 .shopvis {
     display: block;
 }
