@@ -16,7 +16,7 @@ button {
     border: 4px #cccccc;
     color: #000000;
     text-align: center;
-    padding: 8px;
+    padding: 4px;
     transition: all 0.5s;
     cursor: pointer;
 }

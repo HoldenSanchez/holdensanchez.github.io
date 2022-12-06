@@ -11,10 +11,6 @@ function load() {
     draw();
 }
 
-function save () {
-    localStorage.setItem("color_mode", color_mode);
-}
-
 function delete_local_color() {
     localStorage.removeItem("color_mode");
 }
@@ -36,12 +32,22 @@ function draw () {
     }
 
     head.appendChild(link);
-    save();
 }
 
-function color_change (change) {
-    localStorage.color_mode = change
-    document.location.reload()
+function color_change () {
+
+    if (color_mode == 'light'){
+        color_mode = 'dark';
+    }
+    else {
+        color_mode = 'light';
+    }
+    localStorage.setItem("color_mode", color_mode);
+
+    console.log("yay", color_mode)
+
+    setTimeout(() => { document.location.reload(); }, 500);
+
 }
 
 load();
