@@ -58,7 +58,6 @@ function load() {
         hellos = hellos_stored;
     const autos_stored = parseInt(localStorage.getItem("autos"));
     if (!isNaN(autos_stored) && autos != autos_stored)
-        console.log(autos_stored)
         purchase("auto", autos_stored, false)
     const boosts_stored = parseInt(localStorage.getItem("boosts"));
     if (!isNaN(boosts_stored))
@@ -334,33 +333,35 @@ function purchase(item, times, spend) {
             if (spend) {
                 hellos -= 20;
             }
-            
-            if (autos == 1) {
-                t = setInterval(auto_increment, auto_timer);
-                autoOverflow = 1
-            }
-
-            else if (autos > 1 && auto_timer >= 1000) {
-                if (auto_timer > 1000){ 
-                    auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))));
-                    old_auto = autos
+            if (i < 200) {
+                if (autos == 1) {
+                    t = setInterval(auto_increment, auto_timer);
+                    autoOverflow = 1
                 }
-                if(typeof t !== 'undefined') {
+
+                else if (autos > 1 && auto_timer >= 1000) {
+                    if (auto_timer > 1000){ 
+                        auto_timer = 10000 + (1000 * ((-1/500 * (autos ** 2))));
+                        old_auto = autos
+                    }
+                    if(typeof t !== 'undefined') {
+                        clearInterval(t);
+                    }
+                    t = setInterval(auto_increment, auto_timer);
+                    if (auto_timer <= 1000) {
+                        autoOverflow = autos - old_auto + 1
+                    }
+                }
+
+                if(auto_timer < 1000) {
+                    console.log("1000 at: " + autos)
+                    auto_timer = 1000;
                     clearInterval(t);
+                    t = setInterval(auto_increment, auto_timer);
                 }
-                t = setInterval(auto_increment, auto_timer);
-                if (auto_timer <= 1000) {
-                    autoOverflow = autos - old_auto + 1
-                }
-            }
-
-            if(auto_timer < 1000) {
-                console.log("1000 at: " + autos)
-                auto_timer = 1000;
-                clearInterval(t);
-                t = setInterval(auto_increment, auto_timer);
             }
         }
+        
         
     }
 
