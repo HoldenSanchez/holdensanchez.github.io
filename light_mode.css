@@ -11,12 +11,12 @@ div {
 }
 
 button {
-    background-color: #d1d1d1;
+    background-color: #e2e0e0;
     border-radius: 3px;
-    border: 4px #cccccc;
+    border: 4px #000000;
     color: #000000;
     text-align: center;
-    padding: 4px;
+    padding: 4px 10px;
     transition: all 0.5s;
     cursor: pointer;
 }

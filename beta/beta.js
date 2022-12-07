@@ -361,8 +361,6 @@ function purchase(item, times, spend) {
                 }
             }
         }
-        
-        
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
