@@ -184,4 +184,10 @@ function explore_bot() {
     }
 }
 
+/*
+document.onkeydown = function (e) {
+    console.log(e);
+};
+*/
+
 main()
