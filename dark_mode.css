@@ -56,6 +56,14 @@ footer {
     cursor: pointer;
 }
 
+.color_mode {
+    color: white;
+    margin-right: 10px;
+    text-decoration: underline;
+    display: inline;
+    cursor: pointer;
+}
+
 .explore {
     margin-top: 80px;
 }

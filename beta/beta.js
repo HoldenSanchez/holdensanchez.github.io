@@ -9,7 +9,6 @@ var autoOverflow = 1;
 var change = true;
 var items = [];
 var items_displayed = [];
-var color_mode = "light";
 
 // Main function, has very little in it now but may add more as functions increase
 

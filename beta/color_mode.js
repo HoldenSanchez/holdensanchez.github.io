@@ -7,7 +7,7 @@ function load() {
     if (color_mode_stored != undefined)
         color_mode = color_mode_stored;
     else
-        color_mode = "light"
+        color_mode = "light";
     draw();
 }
 
@@ -19,19 +19,32 @@ function draw () {
     head = document.getElementsByName("head")[0];
     link = document.createElement("link");
 
-    link.rel = "stylesheet"
-    link.type = "text/css"
+    link.rel = "stylesheet";
+    link.type = "text/css";
 
-    switch (color_mode){
-        case 'dark':
-            link.href = "dark_mode.css";
-            break;
-        case 'light':
-            link.href = "light_mode.css"
-            break;
+    if (head.classList.contains("in_folder")){
+        switch (color_mode){
+            case 'dark':
+                link.href = "../dark_mode.css";
+                break;
+            case 'light':
+                link.href = "../light_mode.css";
+                break;
+        }
+    }
+    else {
+        switch (color_mode){
+            case 'dark':
+                link.href = "dark_mode.css";
+                break;
+            case 'light':
+                link.href = "light_mode.css";
+                break;
+        }
     }
 
     head.appendChild(link);
+
 }
 
 function color_change () {
@@ -42,12 +55,10 @@ function color_change () {
     else {
         color_mode = 'light';
     }
+
     localStorage.setItem("color_mode", color_mode);
 
-    console.log("yay", color_mode)
-
-    setTimeout(() => { document.location.reload(); }, 500);
-
+    document.location.reload();
 }
 
 load();
