@@ -390,4 +390,8 @@ function purchase(item, times, spend) {
     vis_update()
 }
 
+document.addEventListener('DOMContentLoaded', function(event) {
+    document.querySelector('body').style.opacity = 1
+})
+
 main();
