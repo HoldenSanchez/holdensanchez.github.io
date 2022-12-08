@@ -1,5 +1,7 @@
 body {
     background-color: #333333;
+    opacity: 0;
+    transition: opacity .5s;
 }
 
 p {
@@ -39,6 +41,11 @@ div {
 
 a {
     color: white;
+}
+
+span {
+    color: white;
+    text-decoration: underline;
 }
 
 footer {

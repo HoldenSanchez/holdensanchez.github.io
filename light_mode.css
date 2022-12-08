@@ -1,5 +1,7 @@
 body {
     background-color: #f8f8f8;
+    opacity: 0;
+    transition: opacity .5s;
 }
 
 p {
@@ -39,6 +41,11 @@ button {
 
 a {
     color: rgb(0, 0, 0);
+}
+
+span {
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
 }
 
 footer {

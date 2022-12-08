@@ -275,7 +275,6 @@ function purchase(item, times, spend) {
             }
 
             if (hellos < 0) {
-                console.log("Broke")
                 hellos += 20;
                 break;
             }
@@ -302,7 +301,6 @@ function purchase(item, times, spend) {
             }
 
             if(auto_timer < 1000) {
-                console.log("1000 at: " + autos)
                 auto_timer = 1000;
                 clearInterval(t);
                 t = setInterval(auto_increment, auto_timer);
@@ -316,7 +314,6 @@ function purchase(item, times, spend) {
         for (i = 0; i < max_buy && boosts < 200 + cap; i++) {
             if (autos < 0)
             {
-                console.log("Broke");
                 break;
             }
             boosts += 1;
@@ -354,7 +351,6 @@ function purchase(item, times, spend) {
                 }
 
                 if(auto_timer < 1000) {
-                    console.log("1000 at: " + autos)
                     auto_timer = 1000;
                     clearInterval(t);
                     t = setInterval(auto_increment, auto_timer);
@@ -364,8 +360,6 @@ function purchase(item, times, spend) {
     }
 
     else if (item == "boost" && autos >= 100 * times && change) {
-
-        console.log("Works");
 
         timespayed = 0;
 
@@ -395,5 +389,16 @@ function purchase(item, times, spend) {
 
     vis_update()
 }
+
+window.transitionToPage = function(href) {
+    document.querySelector('body').style.opacity = 0
+    setTimeout(function() { 
+        window.location.href = href
+    }, 500)
+}
+
+document.addEventListener('DOMContentLoaded', function(event) {
+    document.querySelector('body').style.opacity = 1
+})
 
 main();

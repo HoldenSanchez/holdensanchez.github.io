@@ -10,7 +10,6 @@ var change = true;
 var items = [];
 var items_displayed = [];
 
-
 // Main function, has very little in it now but may add more as functions increase
 
 function main() {
@@ -59,7 +58,6 @@ function load() {
         hellos = hellos_stored;
     const autos_stored = parseInt(localStorage.getItem("autos"));
     if (!isNaN(autos_stored) && autos != autos_stored)
-        console.log(autos_stored)
         purchase("auto", autos_stored, false)
     const boosts_stored = parseInt(localStorage.getItem("boosts"));
     if (!isNaN(boosts_stored))
@@ -277,7 +275,6 @@ function purchase(item, times, spend) {
             }
 
             if (hellos < 0) {
-                console.log("Broke")
                 hellos += 20;
                 break;
             }
@@ -354,7 +351,6 @@ function purchase(item, times, spend) {
                 }
 
                 if(auto_timer < 1000) {
-                    console.log("1000 at: " + autos)
                     auto_timer = 1000;
                     clearInterval(t);
                     t = setInterval(auto_increment, auto_timer);
